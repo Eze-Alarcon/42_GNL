@@ -29,9 +29,14 @@ fclean:		clean
 
 re:	fclean all
 
-test: all
+test: re
 	clear
 	$(CC) $(CFLAGS) main.c $(NAME) -o $(TEST_FILE)
+	./$(TEST_FILE)
+
+test2: re
+	clear
+	$(CC) $(CFLAGS) main.c $(SOURCES) $(HEADER) -DBUFFER_SIZE=10 -o $(TEST_FILE)
 	./$(TEST_FILE)
 
 norm:

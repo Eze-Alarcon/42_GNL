@@ -39,6 +39,11 @@ test2: re
 	$(CC) $(CFLAGS) main.c $(SOURCES) $(HEADER) -DBUFFER_SIZE=10 -o $(TEST_FILE)
 	./$(TEST_FILE)
 
+test3: re
+	clear
+	$(CC) $(CFLAGS) main.c $(SOURCES) $(HEADER) -DBUFFER_SIZE=50 -o $(TEST_FILE)
+	./$(TEST_FILE)
+
 norm:
 	clear
 	norminette $(SOURCES) $(HEADER) -R CheckForbiddenSourceHeader

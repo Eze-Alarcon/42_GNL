@@ -1,4 +1,4 @@
-hola mundo
-perro
-gato
-juanete
+linea 1: tiene como 34 caracteres
+linea 2: esta tiene 23
+linea 3: solo 17
+linea 4: esta contiene incluso mas caracteres como 54

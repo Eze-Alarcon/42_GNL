@@ -19,15 +19,19 @@ char *get_next_line(int fd)
 	char	*buffer;
 	size_t	chars;
 
-	printf("buffer = %i\n", BUFFER_SIZE);
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (buffer == NULL)
+		return (NULL);
 	chars = read(fd, buffer, BUFFER_SIZE);
 	if (chars == 0)
 		return (NULL);
 	*(buffer + chars + 1) = '\0';
 	if (chars != 0)
-		printf("has line break: %i\n", has_line_break(buffer, BUFFER_SIZE));
-	printf("buffer: %s\n chars = %lu", buffer, chars);
+	{
+		printf("%s\n", buffer);
+		// printf("\nhas line break: %i\n", has_line_break(buffer, BUFFER_SIZE));
+		get_next_line(fd);
+	}
 	free(buffer);
 	return (buffer);
 }

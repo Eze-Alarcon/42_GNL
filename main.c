@@ -12,18 +12,26 @@ int main()
     }
 
     char *line;
-    /* while ((line = get_next_line(fd)) != NULL)
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     printf("\nejecucion numero %i:\n", i + 1);
+    //     line = get_next_line(fd);
+    //     printf("\nRespuesta en main: -->%s<--\n", line);
+    //     free(line);
+    //     printf("===============");
+    // }
+    while ((line = get_next_line(fd)) != NULL)
     {
         printf("%s\n", line);
         free(line);
-    } */
-    line = get_next_line(fd);
-    if (line != NULL)
-    {
-        printf("\nRespuesta recibida en main:\n");
-        printf("%s", line);
-        free(line);
     }
+    // line = get_next_line(fd);
+    // if (line != NULL)
+    // {
+    //     printf("\nRespuesta recibida en main:\n");
+    //     printf("%s", line);
+    //     free(line);
+    // }
     close(fd);
 
     return 0;

@@ -36,11 +36,36 @@ char	*ft_getline(char *read_str)
 			break ;
 		len++;
 	}
+	if (len == 0)
+		return (NULL);
 	line = (char * )malloc((len + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
 	ft_strlcpy(line, read_str, len + 1);
 	return (line);
+}
+
+char	*ft_leftovers(char *read_str)
+{
+	char	*leftovers;
+	char	size;
+	int		len;
+
+	len = 0;
+	while (read_str[len] && read_str[len] != '\n')
+		len++;
+	if (!read_str[len])
+	{
+		free(read_str);
+		return (NULL);
+	}
+	size = ft_strlen(read_str) - len + 1;
+	leftovers = (char *)malloc(size + 1 * sizeof(char));
+	*(leftovers + size) = '\0';
+	if (!leftovers)
+		return (NULL);
+	ft_strlcpy(leftovers, read_str + len + 1, len + 1);
+	return (leftovers);
 }
 
 char	*get_next_line(int fd)
@@ -54,8 +79,6 @@ char	*get_next_line(int fd)
     if (!read_str)
 		return (NULL);
 	line = ft_getline(read_str);
-	
-	printf("\nline --> %s\n", line);
-	printf("\nstr --> %s\n", read_str);
-    return (read_str);
+	read_str = ft_leftovers(read_str);
+    return (line);
 }

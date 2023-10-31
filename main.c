@@ -1,20 +1,32 @@
 #include "get_next_line.h"
 
-// fileno(FILE) obtiene el fd de un puntero FILE
-int main() {
-	FILE *file = fopen("text.txt", "r");
-	int fd = fileno(file);
+#include <fcntl.h>
 
-	if (fd != -1)
-	{
-		get_next_line(fd);
-	}
-	else
-	{
-		printf("Error al obtener el descriptor de archivo");
-		return (1);
-	}
-	fclose(file);
-	return 0;
+int main()
+{
+    int fd = open("text.txt", O_RDONLY);
+    if (fd < 0)
+    {
+        printf("Error al abrir el archivo");
+        return 1;
+    }
+
+    char *line;
+    /* while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s\n", line);
+        free(line);
+    } */
+    line = get_next_line(fd);
+    if (line != NULL)
+    {
+        printf("\nRespuesta recibida en main:\n");
+        printf("%s", line);
+        free(line);
+    }
+    close(fd);
+
+    return 0;
 }
+
 

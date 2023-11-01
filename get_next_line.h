@@ -1,7 +1,7 @@
 #ifndef GET_NEXT_LINE
 # define GET_NEXT_LINE
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 30
+# define BUFFER_SIZE 50
 #endif
 
 # include <unistd.h>

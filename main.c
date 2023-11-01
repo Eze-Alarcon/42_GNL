@@ -12,7 +12,7 @@ int main()
     }
 
     char *line;
-    // for (int i = 0; i < 5; i++)
+    // for (int i = 0; i < 6; i++)
     // {
     //     printf("\nejecucion numero %i:\n", i + 1);
     //     line = get_next_line(fd);
@@ -22,7 +22,7 @@ int main()
     // }
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("%s\n", line);
+        printf("%s", line);
         free(line);
     }
     // line = get_next_line(fd);
